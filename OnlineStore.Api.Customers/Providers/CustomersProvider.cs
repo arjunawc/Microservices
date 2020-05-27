@@ -21,21 +21,6 @@ namespace OnlineStore.Api.Customers.Providers
             _dbContext = dbContext;
             _logger = logger;
             _mapper = mapper;
-
-            SeedData();
-        }
-
-        private void SeedData()
-        {
-            if (!_dbContext.Customers.Any())
-            {
-                _dbContext.Customers.Add(new Customer() { Id = 1, Name = "Arjuna", Address = "Glenfield" });
-                _dbContext.Customers.Add(new Customer() { Id = 2, Name = "Dilani", Address = "Newmarket" });
-                _dbContext.Customers.Add(new Customer() { Id = 3, Name = "Jason", Address = "Glen Eden" });
-                _dbContext.Customers.Add(new Customer() { Id = 4, Name = "Brandon", Address = "Mount Wellington" });
-
-                _dbContext.SaveChanges();
-            }
         }
 
         public async Task<(bool IsSuccess, Models.Customer Customer, string ErrorMessage)> GetCustomerAsync(int id)

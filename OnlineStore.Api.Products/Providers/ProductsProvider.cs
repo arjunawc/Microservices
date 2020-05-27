@@ -22,21 +22,6 @@ namespace OnlineStore.Api.Products.Providers
             _dbContext = dbContext;
             _logger = logger;
             _mapper = mapper;
-
-            SeedData();
-        }
-
-        private void SeedData()
-        {
-            if (!_dbContext.Products.Any())
-            {
-                _dbContext.Products.Add(new Db.Product() { Id = 1, Name = "Keyboard", Price = 20, Inventory = 1000 });
-                _dbContext.Products.Add(new Db.Product() { Id = 2, Name = "Mouse", Price = 5, Inventory = 2000 });
-                _dbContext.Products.Add(new Db.Product() { Id = 3, Name = "Monitor", Price = 150, Inventory = 1500 });
-                _dbContext.Products.Add(new Db.Product() { Id = 4, Name = "CPU", Price = 200, Inventory = 500 });
-
-                _dbContext.SaveChanges();
-            }
         }
 
         public async Task<(bool IsSuccess, Models.Product Product, string ErrorMessage)> GetProductAsync(int id)
