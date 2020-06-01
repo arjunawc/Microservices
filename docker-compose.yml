@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  onlinestore.api.customers:
+    image: ${DOCKER_REGISTRY-}onlinestoreapicustomers
+    build:
+      context: .
+      dockerfile: OnlineStore.Api.Customers/Dockerfile
+
+  onlinestore.api.orders:
+    image: ${DOCKER_REGISTRY-}onlinestoreapiorders
+    build:
+      context: .
+      dockerfile: OnlineStore.Api.Orders/Dockerfile
+
+
+  onlinestore.api.products:
+    image: ${DOCKER_REGISTRY-}onlinestoreapiproducts
+    build:
+      context: .
+      dockerfile: OnlineStore.Api.Products/Dockerfile
+
+
+  onlinestore.api.search:
+    image: ${DOCKER_REGISTRY-}onlinestoreapisearch
+    build:
+      context: .
+      dockerfile: OnlineStore.Api.Search/Dockerfile
+
