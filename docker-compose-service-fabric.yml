@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  customers:
+    image: arjunawc/onlinestoreapicustomers:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6002:80"
+
+  orders:
+    image: arjunawc/onlinestoreapiorders:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6003:80"
+
+
+  products:
+    image: arjunawc/onlinestoreapiproducts:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6001:80"
+
+
+  search:
+    image: arjunawc/onlinestoreapisearch:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - services__Products=http://10.0.0.4:19081/lil/products/
+      - services__Customers=http://10.0.0.4:19081/lil/customers/
+      - services__Orders=http://10.0.0.4:19081/lil/orders/
+    ports:
+      - "6004:80"
+
